@@ -1,23 +1,30 @@
 import { useState } from 'react'
 import { ReactComponent as Logo } from './logo.svg'
 import './app.css'
+import { useSWRCountState } from './useSWRCountState'
 
 export function App () {
-  const [count, setCount] = useState(0)
+  // const [count, setCount] = useState(0)
+  const [count, setCount, test] = useSWRCountState(0)
 
   return (
     <div className='App'>
       <header className='App-header'>
         <Logo className='App-logo' title='logo' />
         <p>Hello Vite + React!</p>
-        <p>
-          <button type='button' onClick={() => setCount((count) => count + 1)}>
+        {/* <p>
+          <button type="button" onClick={() => setCount((count) => count + 1)}>
             count is: {count}
           </button>
-        </p>
+        </p> */}
         <p>
           Edit <code>App.tsx</code> and save to test HMR updates.
         </p>
+        <div>{count}</div>
+        <div>
+          <button onClick={() => setCount(count + 1)}>+1</button>
+          <button onClick={() => test(count + 1)}>test</button>
+        </div>
         <p>
           <a
             className='App-link'
